@@ -1,0 +1,3 @@
+C:/Users/juand/OneDrive/Desktop/CLionProjects/Mapas/cmake-build-debug/CMakeFiles/Mapas.dir
+C:/Users/juand/OneDrive/Desktop/CLionProjects/Mapas/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/juand/OneDrive/Desktop/CLionProjects/Mapas/cmake-build-debug/CMakeFiles/rebuild_cache.dir
