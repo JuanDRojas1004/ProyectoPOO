@@ -79,12 +79,6 @@ build CMakeFiles/Mapas.dir/Metamorfitas.cpp.obj: CXX_COMPILER__Mapas_unscanned_D
   OBJECT_DIR = CMakeFiles\Mapas.dir
   OBJECT_FILE_DIR = CMakeFiles\Mapas.dir
 
-build CMakeFiles/Mapas.dir/Nodo.cpp.obj: CXX_COMPILER__Mapas_unscanned_Debug C$:/Users/ferre/OneDrive/Desktop/CLionProjects/Proyecto/Nodo.cpp || cmake_object_order_depends_target_Mapas
-  DEP_FILE = CMakeFiles\Mapas.dir\Nodo.cpp.obj.d
-  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles\Mapas.dir
-  OBJECT_FILE_DIR = CMakeFiles\Mapas.dir
-
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Mapas
@@ -93,7 +87,7 @@ build CMakeFiles/Mapas.dir/Nodo.cpp.obj: CXX_COMPILER__Mapas_unscanned_Debug C$:
 #############################################
 # Link the executable Mapas.exe
 
-build Mapas.exe: CXX_EXECUTABLE_LINKER__Mapas_Debug CMakeFiles/Mapas.dir/main.cpp.obj CMakeFiles/Mapas.dir/Criaturas.cpp.obj CMakeFiles/Mapas.dir/LentosdeRaiz.cpp.obj CMakeFiles/Mapas.dir/Centellas.cpp.obj CMakeFiles/Mapas.dir/Metamorfitas.cpp.obj CMakeFiles/Mapas.dir/Nodo.cpp.obj
+build Mapas.exe: CXX_EXECUTABLE_LINKER__Mapas_Debug CMakeFiles/Mapas.dir/main.cpp.obj CMakeFiles/Mapas.dir/Criaturas.cpp.obj CMakeFiles/Mapas.dir/LentosdeRaiz.cpp.obj CMakeFiles/Mapas.dir/Centellas.cpp.obj CMakeFiles/Mapas.dir/Metamorfitas.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Mapas.dir
