@@ -6,3 +6,14 @@
 #define METAMORFITAS_H
 
 #endif //METAMORFITAS_H
+
+class Metamorfitas {
+
+private:
+float adaptabilidad;
+
+public:
+Metamorfitas(float adaptabilidad);
+float getAdaptabilidad();
+
+};

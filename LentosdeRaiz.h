@@ -4,10 +4,17 @@
 
 #ifndef LENTOSDERAIZ_H
 #define LENTOSDERAIZ_H
+#include "Criaturas.h"
 
 
+class LentosdeRaiz: public Criaturas {
 
-class LentosdeRaiz {
+private:
+    float fertilidad;
+
+public:
+    LentosdeRaiz(float fertilidad);
+    float getFertilidad();
 
 };
 
