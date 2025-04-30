@@ -3,6 +3,7 @@
 
 #include <string>
 #include <iostream>
+#include <utility>
 using namespace std;
 
 
@@ -12,10 +13,10 @@ protected:
     string nombre;
     int vida;
     int edad;
-    float posicion;
+    pair <int, int> posicion;
 
 public:
-    Criaturas(const string& nombre, int vida, int edad, float posicion);
+    Criaturas(const string& nombre, int vida, int edad, int x, int y);
 
     virtual void actuar() = 0;
     virtual void reproducirse() = 0;
@@ -27,7 +28,7 @@ public:
 
     int getEdad();
 
-    float getPosicion();
+    pair<float, float> getPosicion();
 
     virtual ~Criaturas();
 };
