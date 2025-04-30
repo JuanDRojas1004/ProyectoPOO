@@ -4,10 +4,19 @@
 
 #ifndef LENTOSDERAIZ_H
 #define LENTOSDERAIZ_H
+#include "Criaturas.h"
 
 
+class LentosdeRaiz: public Criaturas {
 
-class LentosdeRaiz {
+private:
+    float fertilidad;
+public:
+    LentosdeRaiz(const string& nombre, int vida, int edad, float posicion);
+
+    void actuar() override;
+    void reproducirse() override;
+    void morir() override;
 
 };
 

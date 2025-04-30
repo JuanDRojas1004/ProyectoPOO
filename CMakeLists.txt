@@ -12,4 +12,5 @@ add_executable(Mapas main.cpp
         Centellas.h
         Metamorfitas.cpp
         Metamorfitas.h
-        Metamorfitas.h)
+        Metamorfitas.h
+)
