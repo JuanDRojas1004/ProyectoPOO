@@ -18,4 +18,4 @@ pair<float, float> Criaturas::getPosicion() {
     return posicion;
 }
 
-Criaturas::~Criaturas() {}
+

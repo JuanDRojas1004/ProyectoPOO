@@ -30,7 +30,6 @@ public:
 
     pair<float, float> getPosicion();
 
-    virtual ~Criaturas();
 };
 
 
