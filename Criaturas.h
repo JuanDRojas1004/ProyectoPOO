@@ -28,7 +28,7 @@ public:
 
     int getEdad();
 
-    pair<float, float> getPosicion();
+    pair<int, int> getPosicion();
 
     virtual ~Criaturas();
 };

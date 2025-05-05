@@ -13,4 +13,6 @@ add_executable(Mapas main.cpp
         Metamorfitas.cpp
         Metamorfitas.h
         Metamorfitas.h
+        Nodo.cpp
+        Nodo.h
 )

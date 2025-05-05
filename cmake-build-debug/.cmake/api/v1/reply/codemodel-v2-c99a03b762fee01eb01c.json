@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "Mapas::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-Mapas-Debug-83d33c5526a7e73b5ba6.json",
+					"jsonFile" : "target-Mapas-Debug-065d11f5f788ddb345d3.json",
 					"name" : "Mapas",
 					"projectIndex" : 0
 				}
@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Users/ferre/OneDrive/Desktop/CLionProjects/Proyecto/cmake-build-debug",
-		"source" : "C:/Users/ferre/OneDrive/Desktop/CLionProjects/Proyecto"
+		"build" : "C:/Users/juand/OneDrive/Desktop/CLionProjects/Mapas/cmake-build-debug",
+		"source" : "C:/Users/juand/OneDrive/Desktop/CLionProjects/Mapas"
 	},
 	"version" : 
 	{
