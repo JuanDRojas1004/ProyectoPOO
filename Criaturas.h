@@ -14,6 +14,7 @@ protected:
     int vida;
     int edad;
     pair <int, int> posicion;
+    bool estaViva;
 
 public:
     Criaturas(const string& nombre, int vida, int edad, int x, int y);
@@ -29,6 +30,8 @@ public:
     int getEdad();
 
     pair<int, int> getPosicion();
+
+    bool estaVivaFunc() const { return estaViva; }
 
 };
 

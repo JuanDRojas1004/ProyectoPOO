@@ -19,14 +19,19 @@ int Centellas::velocidad() {
 }
 
 void Centellas::actuar() {
+    if (!estaViva) return;
     cout << nombre << " Se mueve rápidamente con velocidad: " << velocidad() << "." << endl;
 }
 
 void Centellas::reproducirse() {
-    cout << nombre << " se ha reproducido";
+    if (!estaViva) return;
+    cout << nombre << " se ha reproducido" << endl;
 }
 
 void Centellas::morir() {
-    cout << nombre << " Ha muerto " << endl;
+    if (vida <= 0 || edad > 86) {
+        estaViva = false;
+        cout << nombre << " ha muerto " << endl;
+    }
 }
 
