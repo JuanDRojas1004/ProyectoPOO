@@ -5,9 +5,9 @@
 #include "LentosdeRaiz.h"
 #include <iostream>
 
-LentosdeRaiz::LentosdeRaiz(const string& nombre, int vida, int edad, float posicion)
-        : Criaturas(nombre, vida, edad, posicion) {
-    fertilidad = 0.5; //para iniciar
+LentosdeRaiz::LentosdeRaiz(const string& nombre, int vida, int edad, int x, int y)
+        : Criaturas(nombre, vida, edad, x, y) {
+    fertilidad = 0.5; //para iniciar?
 }
 
 void LentosdeRaiz::actuar() {
@@ -15,7 +15,11 @@ void LentosdeRaiz::actuar() {
 }
 
 void LentosdeRaiz::reproducirse() {
-    cout << nombre << " Extiende raíces y genera un brote cercano " << endl;
+    if (fertilidad >= 1.8)
+        cout << nombre << " se ha reproducido ";
+    else {
+        cout << nombre << " no es suficientemente fertil para reproducirse ";
+    }
 }
 
 void LentosdeRaiz::morir() {

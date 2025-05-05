@@ -11,8 +11,8 @@
 #include "Centellas.h"
 #include <iostream>
 
-Centellas::Centellas(const string& nombre, int vida, int edad, float posicion)
-        : Criaturas(nombre, vida, edad, posicion) {}
+Centellas::Centellas(const string& nombre, int vida, int edad, int x, int y)
+        : Criaturas(nombre, vida, edad, x, y) {}
 
 int Centellas::velocidad() {
     //return
@@ -23,7 +23,7 @@ void Centellas::actuar() {
 }
 
 void Centellas::reproducirse() {
-    cout << nombre << " Se ha dividido en dos Centellas " << endl;
+    cout << nombre << " se ha reproducido";
 }
 
 void Centellas::morir() {

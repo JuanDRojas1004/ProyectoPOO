@@ -19,7 +19,7 @@ public:
     Criaturas(const string& nombre, int vida, int edad, int x, int y);
 
     virtual void actuar() = 0;
-    virtual void reproducirse() = 0;
+    virtual void reproducirse();
     virtual void morir() = 0;
 
     string getNombre();
@@ -28,7 +28,7 @@ public:
 
     int getEdad();
 
-    pair<float, float> getPosicion();
+    pair<int, int> getPosicion();
 
 };
 

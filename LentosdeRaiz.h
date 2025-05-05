@@ -12,7 +12,7 @@ class LentosdeRaiz: public Criaturas {
 private:
     float fertilidad;
 public:
-    LentosdeRaiz(const string& nombre, int vida, int edad, float posicion);
+    LentosdeRaiz(const string& nombre, int vida, int edad, int x, int y);
 
     void actuar() override;
     void reproducirse() override;

@@ -14,7 +14,7 @@ private:
 
     public:
 
-        Metamorfitas(const string& nombre, int vida, int edad, float posicion);
+        Metamorfitas(const string& nombre, int vida, int edad, int x, int y);
 
     void actuar() override;
     void reproducirse() override;
