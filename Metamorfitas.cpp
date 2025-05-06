@@ -32,7 +32,7 @@ void Metamorfitas::reproducirse(vector<shared_ptr<Criaturas>>& criaturas) {
 }
 
 void Metamorfitas::morir() {
-    if (vida <= 0 || edad >= 137) {
+    if (vida <= 0 || edad >= 8) {
         estaViva = false;
         cout << nombre << " ha muerto " << endl;
     }

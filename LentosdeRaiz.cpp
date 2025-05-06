@@ -7,7 +7,7 @@
 
 LentosdeRaiz::LentosdeRaiz(const string& nombre, int vida, int edad, int x, int y)
         : Criaturas(nombre, vida, edad, x, y) {
-    fertilidad = 0.5; //para iniciar?
+    fertilidad = 0.5;
 }
 
 void LentosdeRaiz::actuar() {
@@ -30,7 +30,7 @@ void LentosdeRaiz::reproducirse(vector<shared_ptr<Criaturas>>& criaturas) {
     }
 }
 void LentosdeRaiz::morir(){
-    if (vida <= 0 || fertilidad < -1.5) {
+    if (vida <= 0 || fertilidad < -1.5 || edad > 9) {
         estaViva = false;
         cout << nombre << " ha muerto " << endl;
     }

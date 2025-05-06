@@ -38,7 +38,7 @@ void Centellas::reproducirse(vector<shared_ptr<Criaturas>>& criaturas) {
 }
 
 void Centellas::morir() {
-    if (vida <= 0 || edad > 86) {
+    if (vida <= 0 || edad > 5) {
         estaViva = false;
         cout << nombre << " ha muerto " << endl;
     }
