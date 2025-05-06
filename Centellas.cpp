@@ -19,9 +19,9 @@ void Centellas::actuar() {
 
 void Centellas::reproducirse(vector<shared_ptr<Criaturas>>& criaturas) {
     if (!estaViva) return; //Verificar si está viva antes de reproducirse
-    if (edad >= 1) { //Condición para que se reproduzca sólo si tiene 1 o más ciclos
+    if (edad >= 1) { //Condición para que se reproduzca solo si tiene 1 o más ciclos
         cout << nombre << " se ha reproducido" << endl;
-        Centellas* hijo = new Centellas(nombre + "_hijo", 50, 0, posicion.first, posicion.second);
+        Centellas* hijo = new Centellas(nombre + "_hijo", 50, 0, posicion.first, posicion.second); //Agregar un nuevo hijo al vector hijos en la misma posición del padre
         hijos.push_back(hijo);
 
         cout << "Nueva centella: " << hijo->getNombre()
@@ -32,8 +32,8 @@ void Centellas::reproducirse(vector<shared_ptr<Criaturas>>& criaturas) {
 }
 
 void Centellas::morir() {
-    if (vida <= 0 || edad > 5) {
-        estaViva = false;
+    if (vida <= 0 || edad > 5) { //Condición para que cuando se le acabe la vida o cumpla más de 5 ciclos, muera
+        estaViva = false; //El booleano cambia a false para indicar que la criatura murió y no puede realizar más acciones
         cout << nombre << " ha muerto " << endl;
     }
 }

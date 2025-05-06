@@ -17,7 +17,7 @@ protected:
     int edad;
     pair <int, int> posicion; //Par para la posición de las criaturas
     bool estaViva;
-    static vector<Criaturas*> hijos; //Vector para akmacenar a los hijos de las criaturas
+    static vector<Criaturas*> hijos; //Vector para almacenar a los hijos de las criaturas
 
 public:
 
@@ -38,7 +38,7 @@ public:
 
     int setEdad(int valor);
 
-    void setPosición()
+    void setPosicion(int x, int y);
 
     pair<int, int> getPosicion();
 

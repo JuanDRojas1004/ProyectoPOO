@@ -28,6 +28,11 @@ int Criaturas::setEdad(int valor) {
     return edad;
 }
 
+void Criaturas::setPosicion(int x, int y) {
+    posicion.first = x;
+    posicion.second = y;
+}
+
 
 pair<int, int> Criaturas::getPosicion() { //Trabajamos la posición como un par
     return posicion;
