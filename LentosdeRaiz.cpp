@@ -15,16 +15,21 @@ void LentosdeRaiz::actuar() {
     cout << nombre << " se queda quieto, absorbiendo nutrientes " << endl;
 }
 
-void LentosdeRaiz::reproducirse() {
+void LentosdeRaiz::reproducirse(vector<shared_ptr<Criaturas>>& criaturas) {
     if (!estaViva) return;
-    if (fertilidad >= 1.8)
-        cout << nombre << " se ha reproducido ";
-    else {
-        cout << nombre << " no es suficientemente fertil para reproducirse " << endl;
+    if (edad >= 1 && fertilidad >= 1.8) {
+        cout << nombre << " ha extendido sus raíces... ¡una nueva criatura ha brotado!\n";
+
+        LentosdeRaiz* hijo = new LentosdeRaiz(nombre + "_hijo", 50, 0, posicion.first, posicion.second);
+        hijos.push_back(hijo);
+
+        cout << "Nuevo lento de raíz: " << hijo->getNombre()
+             << " en posición (" << posicion.first << ", " << posicion.second << ")\n";
+    } else {
+        cout << nombre << " no tiene suficiente fertilidad o edad para reproducirse.\n";
     }
 }
-
-void LentosdeRaiz::morir() {
+void LentosdeRaiz::morir(){
     if (vida <= 0 || fertilidad < -1.5) {
         estaViva = false;
         cout << nombre << " ha muerto " << endl;

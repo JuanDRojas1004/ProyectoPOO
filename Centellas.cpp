@@ -23,9 +23,18 @@ void Centellas::actuar() {
     cout << nombre << " Se mueve rápidamente con velocidad: " << velocidad() << "." << endl;
 }
 
-void Centellas::reproducirse() {
+void Centellas::reproducirse(vector<shared_ptr<Criaturas>>& criaturas) {
     if (!estaViva) return;
-    cout << nombre << " se ha reproducido" << endl;
+    if (edad >= 1) {
+        cout << nombre << " se ha reproducido" << endl;
+        Centellas* hijo = new Centellas(nombre + "_hijo", 50, 0, posicion.first, posicion.second);
+        hijos.push_back(hijo);
+
+        cout << "Nueva centella: " << hijo->getNombre()
+             << " en posición (" << posicion.first << ", " << posicion.second << ")" << endl;
+    } else {
+        cout << nombre << " es demasiado joven para reproducirse " << endl;
+    }
 }
 
 void Centellas::morir() {
