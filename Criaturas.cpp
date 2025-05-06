@@ -17,6 +17,15 @@ int Criaturas::getEdad() {
     return edad;
 }
 
+int Criaturas::setVida(int valor) {
+    vida += valor;
+}
+
+int Criaturas::setEdad(int valor) {
+    edad += valor;
+}
+
+
 pair<int, int> Criaturas::getPosicion() {
     return posicion;
 }

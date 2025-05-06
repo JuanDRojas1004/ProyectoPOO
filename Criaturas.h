@@ -32,6 +32,10 @@ public:
 
     int getEdad();
 
+    int setVida(int valor);
+
+    int setEdad(int valor);
+
     pair<int, int> getPosicion();
 
     bool estaVivaFunc() const;
