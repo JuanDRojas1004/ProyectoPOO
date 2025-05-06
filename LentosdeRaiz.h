@@ -8,10 +8,12 @@
 #include <vector>
 
 
-class LentosdeRaiz: public Criaturas {
+class LentosdeRaiz: public Criaturas { //Heredar los atributos públicos de Criaturas
 private:
-    float fertilidad;
+    float fertilidad; //atributo propio de lentos de raíz
 public:
+
+    //Constructor
     LentosdeRaiz(const string& nombre, int vida = 50, int edad = 0, int x, int y);
 
     void actuar() override;
