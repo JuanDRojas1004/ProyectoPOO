@@ -1,3 +1,11 @@
 # ninja log v6
-32	712	7664595998994631	CMakeFiles/Mapas.dir/main.cpp.obj	a786be15ae5d35ab
+47	881	7681850729377576	CMakeFiles/Mapas.dir/Nodo.cpp.obj	643403c82af8ea7a
+21	137	7681850729113340	CMakeFiles/Mapas.dir/main.cpp.obj	a786be15ae5d35ab
+41	703	7681850729321016	CMakeFiles/Mapas.dir/Metamorfitas.cpp.obj	5d8c37e98e65d8d8
+63	755	7681850729544106	CMakeFiles/Mapas.dir/NodoJovenPorSiempre.cpp.obj	e23ad3dd6b1b99e6
 713	838	7664596005796521	Mapas.exe	da4e342adff9d1d6
+58	759	7681850729491651	CMakeFiles/Mapas.dir/NodoVenenoso.cpp.obj	7527e6e9c316e0db
+32	686	7681850729220338	CMakeFiles/Mapas.dir/LentosdeRaiz.cpp.obj	ca081f8c656ae25d
+28	825	7681850729179877	CMakeFiles/Mapas.dir/Criaturas.cpp.obj	1f74724040530844
+36	683	7681850729265597	CMakeFiles/Mapas.dir/Centellas.cpp.obj	b4bb7e703f6ea5f7
+52	826	7681850729422637	CMakeFiles/Mapas.dir/NodoNormal.cpp.obj	a08313f6e010f748

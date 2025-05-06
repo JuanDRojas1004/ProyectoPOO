@@ -15,4 +15,12 @@ add_executable(Mapas main.cpp
         Metamorfitas.h
         Nodo.cpp
         Nodo.h
+        NodoNormal.cpp
+        NodoNormal.h
+        NodoVenenoso.cpp
+        NodoVenenoso.h
+        NodoJovenPorSiempre.cpp
+        NodoJovenPorSiempre.h
+        NodoReproducion.cpp
+        NodoReproducion.h
 )

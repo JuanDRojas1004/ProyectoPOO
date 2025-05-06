@@ -22,30 +22,21 @@ private:
     vector<Criaturas*> criaturas;
 
 public:
-    Nodo(const string& tipo, const int& x, const int& y ) : tipo (tipo), posicion(make_pair(x, y)) {}
+    Nodo(const string& tipo, const int& x, const int& y );
 
-    string getTipo(){return tipo;}
+    string getTipo();
 
-    pair<int, int> getPosicion() {return posicion;}
+    pair<int, int> getPosicion();
 
-    void mostrarCriaturas() const{
+    void mostrarCriaturas() const;
 
-        for (const auto& cri : criaturas) {
-            cout << "Criatura: " << cri -> getNombre() << "  de edad: " << cri -> getEdad()
-            << "  con vida: " << cri -> getVida() << endl;
-        }
-
-    }
-
-    void agregarCriaturas(Criaturas *cri) {
-        criaturas.push_back(cri);
-    }
+    void agregarCriaturas(Criaturas *cri);
 
     virtual void efectoEspecial(Criaturas *cri) = 0;
 
-    int cantidadCriaturas() const{ return criaturas.size();}
+    int cantidadCriaturas() const;
 
-    virtual ~Nodo() = default;
+    virtual ~Nodo();
 
 
 };
