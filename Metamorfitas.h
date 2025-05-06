@@ -3,16 +3,19 @@
 
 #include "Criaturas.h"
 
-class Metamorfitas : public Criaturas {
+class Metamorfitas : public Criaturas { //Heredar los atributos públicos de Criaturas
 private:
-    float adaptabilidad();
+    float adaptabilidad(); //atributo propio de metamorfitas
 
 public:
+
+    //Constructor
     Metamorfitas(const string& nombre, int vida = 50, int edad = 0, int x, int y);
 
     void actuar() override;
     void reproducirse(vector<shared_ptr<Criaturas>>& criaturas) override;
     void morir() override;
+    int getAdaptabilidad();
 };
 
 #endif // METAMORFITAS_H

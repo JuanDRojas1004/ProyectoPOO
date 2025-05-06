@@ -3,6 +3,7 @@
 Criaturas::Criaturas(const string &nombre, int vida, int edad, int x, int y):
 nombre(nombre), vida(vida), edad(edad), posicion(make_pair(x, y)), estaViva(true) {}
 
+//Vector para almacenar a los hijos de las criaturas
 vector<Criaturas*> Criaturas::hijos;
 
 string Criaturas::getNombre() {
@@ -18,19 +19,26 @@ int Criaturas::getEdad() {
 }
 
 int Criaturas::setVida(int valor) {
-    vida += valor;
+    vida += valor; //sumar y disminuir vida
+    return vida;
 }
 
 int Criaturas::setEdad(int valor) {
-    edad += valor;
+    edad += valor; //sumar y disminuir edad
+    return edad;
+}
+
+void Criaturas::setPosicion(int x, int y) {
+    posicion.first = x;
+    posicion.second = y;
 }
 
 
-pair<int, int> Criaturas::getPosicion() {
+pair<int, int> Criaturas::getPosicion() { //Trabajamos la posición como un par
     return posicion;
 }
 
-bool Criaturas::estaVivaFunc() const {
+bool Criaturas::estaVivaFunc() const { //Función booleana para validar si la criatura está viva o no
     return estaViva;
 }
 
@@ -39,12 +47,5 @@ const vector<Criaturas *> & Criaturas::obtenerHijos() const {
 }
 
 void Criaturas::reproducirse(vector<shared_ptr<Criaturas>>& criaturas) {
-    if (edad >= 1) {
-        cout << nombre << " se ha reproducido creando una nueva criatura." << endl;
-        cout << "Nueva criatura: " << nombre << "_hijo"
-             << " en posición (" << posicion.first + 1 << ", " << posicion.second + 1 << ")" << endl;
-    } else {
-        cout << nombre << " es demasiado joven para reproducirse." << endl;
-    }
 }
 
