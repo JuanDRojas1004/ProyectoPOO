@@ -16,6 +16,7 @@ public:
     void reproducirse(vector<shared_ptr<Criaturas>>& criaturas) override;
     void morir() override;
     int getAdaptabilidad();
+    string getTipo() const override;
 };
 
 #endif // METAMORFITAS_H

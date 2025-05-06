@@ -20,6 +20,7 @@ public:
     void reproducirse(vector<shared_ptr<Criaturas>>& criaturas) override;
     void morir() override;
     float getFertilidad();
+    string getTipo() const override;
 };
 
 

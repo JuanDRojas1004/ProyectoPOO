@@ -41,3 +41,7 @@ float LentosdeRaiz::getFertilidad() {
     return fertilidad;
 }
 
+string LentosdeRaiz::getTipo() const {
+    return "Lento de Raiz";
+}
+

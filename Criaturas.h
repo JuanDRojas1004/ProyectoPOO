@@ -34,6 +34,8 @@ public:
 
     int getEdad();
 
+    virtual string getTipo() const = 0;
+
     int setVida(int valor);
 
     int setEdad(int valor);
@@ -45,6 +47,8 @@ public:
     bool estaVivaFunc() const;
 
     const vector<Criaturas*>& obtenerHijos() const;
+
+    void mover(int tamañoMapa);
 };
 
 

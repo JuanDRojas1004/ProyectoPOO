@@ -41,3 +41,7 @@ void Metamorfitas::morir() {
 int Metamorfitas::getAdaptabilidad() {
     return adaptabilidad();
 }
+
+string Metamorfitas::getTipo() const {
+    return "Metamorfita";
+}

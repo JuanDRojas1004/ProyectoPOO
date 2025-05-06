@@ -42,3 +42,7 @@ int Centellas::getVelocidad() {
     return velocidad();
 }
 
+string Centellas::getTipo() const {
+    return "Centella";
+}
+
