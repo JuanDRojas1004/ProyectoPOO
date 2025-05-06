@@ -9,16 +9,15 @@
 
 
 class LentosdeRaiz: public Criaturas {
-
 private:
     float fertilidad;
 public:
     LentosdeRaiz(const string& nombre, int vida = 50, int edad = 0, int x, int y);
 
     void actuar() override;
-    void reproducirse(vector<shared_ptr<Criaturas>>& criaturas);
+    void reproducirse(vector<shared_ptr<Criaturas>>& criaturas) override;
     void morir() override;
-
+    float getFertilidad();
 };
 
 

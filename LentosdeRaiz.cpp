@@ -36,3 +36,7 @@ void LentosdeRaiz::morir(){
     }
 }
 
+float LentosdeRaiz::getFertilidad() {
+    return fertilidad;
+}
+

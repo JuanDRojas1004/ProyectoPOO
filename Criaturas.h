@@ -11,7 +11,7 @@ using namespace std;
 
 
 class Criaturas {
-protected:
+protected: //Atributos protegidos para que los
     string nombre;
     int vida;
     int edad;

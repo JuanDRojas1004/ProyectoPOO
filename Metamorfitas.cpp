@@ -24,7 +24,7 @@ void Metamorfitas::reproducirse(vector<shared_ptr<Criaturas>>& criaturas) {
         Metamorfitas* hijo = new Metamorfitas(nombre + "_hijo", 50, 0, posicion.first, posicion.second);
         hijos.push_back(hijo);
 
-        cout << "Nueva metamorifta: " << hijo->getNombre()
+        cout << "Nueva metamorfita: " << hijo->getNombre()
              << " en posición (" << posicion.first << ", " << posicion.second << ")" << endl;
     } else {
         cout << nombre << " aun es muy joven para reproducirse " << endl;
@@ -36,4 +36,8 @@ void Metamorfitas::morir() {
         estaViva = false;
         cout << nombre << " ha muerto " << endl;
     }
+}
+
+int Metamorfitas::getAdaptabilidad() {
+    return adaptabilidad();
 }

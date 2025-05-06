@@ -20,7 +20,7 @@ public:
     void actuar() override;
     void reproducirse(vector<shared_ptr<Criaturas>>& criaturas) override;
     void morir() override;
-
+    int getVelocidad();
 };
 
 

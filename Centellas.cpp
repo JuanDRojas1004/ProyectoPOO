@@ -44,3 +44,7 @@ void Centellas::morir() {
     }
 }
 
+int Centellas::getVelocidad() {
+    return velocidad();
+}
+
