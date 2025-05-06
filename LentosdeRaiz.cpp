@@ -20,7 +20,7 @@ void LentosdeRaiz::reproducirse(vector<shared_ptr<Criaturas>>& criaturas) {
     if (edad >= 1 && fertilidad >= 1.8) { //condición para que se pueda reproducir
         cout << nombre << " ha extendido sus raíces... ¡una nueva criatura ha brotado!\n";
 
-        LentosdeRaiz* hijo = new LentosdeRaiz(nombre + "_hijo", 50, 0, posicion.first, posicion.second); //el hijo nace en la posición del padre, se pone así ya que estamos trabajando con pares
+        LentosdeRaiz* hijo = new LentosdeRaiz(nombre + "_hijo", 50, 0, posicion.first, posicion.second); //el hijo nace en la posición del padre, se pone así, ya que estamos trabajando con pares
 
         hijos.push_back(hijo);//agregar un hijo nuevo al vector de hijos
 
