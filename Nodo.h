@@ -19,6 +19,8 @@ class Nodo {
 private:
     pair <int, int> posicion;
     string tipo;
+
+protected:
     vector<Criaturas*> criaturas;
 
 public:

@@ -11,13 +11,9 @@
 class NodoVenenoso : public Nodo{
 
 public:
-    NodoVenenoso(int x, int y) : Nodo("Venenoso", x, y) {}
+    NodoVenenoso(int x, int y);
 
-    void efectoEspecial(Criaturas *cri) override {
-        cout << cri->getNombre() << " pierde 5 de vida por veneno.\n";
-    }
-
-
+    void efectoEspecial(Criaturas *cri) override;
 };
 
 

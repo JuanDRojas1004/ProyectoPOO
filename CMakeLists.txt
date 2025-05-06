@@ -21,6 +21,6 @@ add_executable(Mapas main.cpp
         NodoVenenoso.h
         NodoJovenPorSiempre.cpp
         NodoJovenPorSiempre.h
-        NodoReproducion.cpp
-        NodoReproducion.h
+        NodoRegenerativo.cpp
+        NodoRegenerativo.h
 )

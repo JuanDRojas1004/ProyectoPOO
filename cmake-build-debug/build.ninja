@@ -103,8 +103,8 @@ build CMakeFiles/Mapas.dir/NodoJovenPorSiempre.cpp.obj: CXX_COMPILER__Mapas_unsc
   OBJECT_DIR = CMakeFiles\Mapas.dir
   OBJECT_FILE_DIR = CMakeFiles\Mapas.dir
 
-build CMakeFiles/Mapas.dir/NodoReproducion.cpp.obj: CXX_COMPILER__Mapas_unscanned_Debug C$:/Users/juand/OneDrive/Desktop/CLionProjects/Mapas/NodoReproducion.cpp || cmake_object_order_depends_target_Mapas
-  DEP_FILE = CMakeFiles\Mapas.dir\NodoReproducion.cpp.obj.d
+build CMakeFiles/Mapas.dir/NodoRegenerativo.cpp.obj: CXX_COMPILER__Mapas_unscanned_Debug C$:/Users/juand/OneDrive/Desktop/CLionProjects/Mapas/NodoRegenerativo.cpp || cmake_object_order_depends_target_Mapas
+  DEP_FILE = CMakeFiles\Mapas.dir\NodoRegenerativo.cpp.obj.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\Mapas.dir
   OBJECT_FILE_DIR = CMakeFiles\Mapas.dir
@@ -117,7 +117,7 @@ build CMakeFiles/Mapas.dir/NodoReproducion.cpp.obj: CXX_COMPILER__Mapas_unscanne
 #############################################
 # Link the executable Mapas.exe
 
-build Mapas.exe: CXX_EXECUTABLE_LINKER__Mapas_Debug CMakeFiles/Mapas.dir/main.cpp.obj CMakeFiles/Mapas.dir/Criaturas.cpp.obj CMakeFiles/Mapas.dir/LentosdeRaiz.cpp.obj CMakeFiles/Mapas.dir/Centellas.cpp.obj CMakeFiles/Mapas.dir/Metamorfitas.cpp.obj CMakeFiles/Mapas.dir/Nodo.cpp.obj CMakeFiles/Mapas.dir/NodoNormal.cpp.obj CMakeFiles/Mapas.dir/NodoVenenoso.cpp.obj CMakeFiles/Mapas.dir/NodoJovenPorSiempre.cpp.obj CMakeFiles/Mapas.dir/NodoReproducion.cpp.obj
+build Mapas.exe: CXX_EXECUTABLE_LINKER__Mapas_Debug CMakeFiles/Mapas.dir/main.cpp.obj CMakeFiles/Mapas.dir/Criaturas.cpp.obj CMakeFiles/Mapas.dir/LentosdeRaiz.cpp.obj CMakeFiles/Mapas.dir/Centellas.cpp.obj CMakeFiles/Mapas.dir/Metamorfitas.cpp.obj CMakeFiles/Mapas.dir/Nodo.cpp.obj CMakeFiles/Mapas.dir/NodoNormal.cpp.obj CMakeFiles/Mapas.dir/NodoVenenoso.cpp.obj CMakeFiles/Mapas.dir/NodoJovenPorSiempre.cpp.obj CMakeFiles/Mapas.dir/NodoRegenerativo.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Mapas.dir
