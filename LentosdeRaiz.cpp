@@ -20,12 +20,12 @@ void LentosdeRaiz::reproducirse(vector<shared_ptr<Criaturas>>& criaturas,
 vector<vector<shared_ptr<Nodo>>>& mapa) {
 if (!estaViva) return;
 if (edad >= 2) {
-    cout << nombre << " ha echado raíces nuevas... ¡un nuevo lento ha nacido!\n";
+    cout << nombre << " ha echado raices nuevas... ¡un nuevo lento ha nacido!\n";
     auto hijo = make_shared<LentosdeRaiz>(nombre + "_hijo", 60, 0, posicion.first, posicion.second);
     criaturas.push_back(hijo);
     mapa[posicion.first][posicion.second]->agregarCriaturas(hijo.get());
     cout << "Nuevo lento: " << hijo->getNombre()
-         << " en posición (" << posicion.first << ", " << posicion.second << ")\n";
+         << " en posicion (" << posicion.first << ", " << posicion.second << ")\n";
 }
 }
 void LentosdeRaiz::morir(){

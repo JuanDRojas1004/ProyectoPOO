@@ -27,7 +27,7 @@ if (edad >= 3) {
     criaturas.push_back(hijo);
     mapa[posicion.first][posicion.second]->agregarCriaturas(hijo.get());
     cout << "Nueva metamorifta: " << hijo->getNombre()
-         << " en posición (" << posicion.first << ", " << posicion.second << ")\n";
+         << " en posicion (" << posicion.first << ", " << posicion.second << ")\n";
 }
 }
 

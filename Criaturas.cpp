@@ -18,7 +18,7 @@ bool Criaturas::estaVivaFunc() const { return estaViva; }
 const vector<Criaturas*>& Criaturas::obtenerHijos() const { return hijos; }
 
 void Criaturas::reproducirse(vector<shared_ptr<Criaturas>>& criaturas, vector<vector<shared_ptr<Nodo>>>& mapa) {
-    // Este método no se usa, es virtual puro, pero definimos vacío para evitar linker error si se llama accidentalmente
+    // Este metodo no se usa, es virtual puro, pero definimos vacío para evitar linker error si se llama accidentalmente
 }
 
 void Criaturas::morir() {
@@ -43,7 +43,7 @@ void Criaturas::mover(int tamanioMapa) {
     pair<int, int> nuevaPos = posiblesMovimientos[dist(gen)];
 
     posicion = nuevaPos;
-    cout << nombre << " se movió a (" << posicion.first << ", " << posicion.second << ")." << endl;
+    cout << nombre << " se movio a (" << posicion.first << ", " << posicion.second << ")." << endl;
 }
 
 Criaturas::~Criaturas() = default;

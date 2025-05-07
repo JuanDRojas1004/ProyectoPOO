@@ -28,7 +28,7 @@ int pedirNumero(const string& mensaje) {
     int num;
     cout << mensaje;
     while (!(cin >> num) || num <= 0) {
-        cout << "Por favor ingrese un número válido mayor que 0: ";
+        cout << "Por favor ingrese un numero valido mayor que 0: ";
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
     }
@@ -41,7 +41,7 @@ pair<int, int> posicionAleatoria() {
 }
 
 void crearMapa() {
-    tamañoMapa = pedirNumero("Ingrese el tamaño del mapa (ej. 5 para 5x5): ");
+    tamañoMapa = pedirNumero("Ingrese las dimensiones del mapa (ej. 5 para 5x5): ");
     mapa.clear();
     for (int i = 0; i < tamañoMapa; ++i) {
         vector<shared_ptr<Nodo>> fila;
@@ -74,10 +74,10 @@ void crearCriatura() {
     }
 
     cout << "\nElige el tipo de criatura a crear:\n";
-    cout << "1. Centella - Rápida, eléctrica y chispeante.\n";
-    cout << "2. Lento de Raíz - Fuerte y resistente, pero lento.\n";
+    cout << "1. Centella - Rapida, electrica y chispeante.\n";
+    cout << "2. Lento de Raiz - Fuerte y resistente, pero lento.\n";
     cout << "3. Metamorifta - Inestable, adaptable, siempre cambiando.\n";
-    cout << "Opción: ";
+    cout << "Opcion: ";
 
     int opcion;
     cin >> opcion;
@@ -96,7 +96,7 @@ void crearCriatura() {
     else if (opcion == 3)
         criatura = make_shared<Metamorfitas>(nombre, 50, 0, pos.first, pos.second);
     else {
-        cout << "Opción inválida.\n";
+        cout << "Opcion invalida.\n";
         return;
     }
 
@@ -184,7 +184,7 @@ void avanzarCiclo() {
             mapa[posAnterior.first][posAnterior.second]->eliminarCriatura(criatura.get());
             mapa[posNueva.first][posNueva.second]->agregarCriaturas(criatura.get());
 
-            cout << criatura->getNombre() << " se desplazó de (" << posAnterior.first << ", " << posAnterior.second
+            cout << criatura->getNombre() << " se desplazo de (" << posAnterior.first << ", " << posAnterior.second
                  << ") a (" << posNueva.first << ", " << posNueva.second << ").\n";
         } else if (eleccion == 2) {
             criatura->reproducirse(criaturas, mapa);
@@ -195,20 +195,20 @@ void avanzarCiclo() {
 }
 
 void guardarYSalir() {
-    cout << "\nHasta la próxima!\n";
+    cout << "\nHasta la proxima!\n";
 }
 
 int main() {
     int opcion = -1;
     do {
-        cout << "\n=== MENÚ DEL MUNDO DE CRIATURAS ===\n";
+        cout << "\n=== MENU DEL MUNDO DE CRIATURAS ===\n";
         cout << "1. Crear mapa\n";
         cout << "2. Crear criatura\n";
         cout << "3. Avanzar un ciclo\n";
         cout << "4. Imprimir mapa\n";
         cout << "5. Mostrar criaturas por nodo\n";
         cout << "6. Salir\n";
-        cout << "Opción: ";
+        cout << "Opcion: ";
         cin >> opcion;
 
         switch (opcion) {
@@ -218,7 +218,7 @@ int main() {
             case 4: imprimirMapa(); break;
             case 5: mostrarCriaturasPorNodo(); break;
             case 6: guardarYSalir(); break;
-            default: cout << "Opción inválida.\n";
+            default: cout << "Opcion invalida.\n";
         }
 
     } while (opcion != 6);
