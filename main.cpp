@@ -137,6 +137,7 @@ void avanzarCiclo() {
 
     for (auto& criatura : criaturas) {
         if (!criatura->estaVivaFunc()) continue;
+        criatura->setEdad(1);
 
         int eleccion = accion(gen);
         if (eleccion == 0) {

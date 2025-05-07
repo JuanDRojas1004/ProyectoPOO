@@ -25,4 +25,5 @@ void Nodo::agregarCriaturas(Criaturas *cri) {
 
 int Nodo::cantidadCriaturas() const { return criaturas.size();}
 
+
 Nodo::~Nodo() = default;

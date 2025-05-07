@@ -5,7 +5,7 @@
 
 class Metamorfitas : public Criaturas { //Heredar los atributos públicos de Criaturas
 private:
-    float adaptabilidad(); //atributo propio de metamorfitas
+    int adaptabilidad(); //atributo propio de metamorfitas
 
 public:
 

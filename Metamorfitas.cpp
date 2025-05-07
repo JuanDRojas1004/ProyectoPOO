@@ -8,7 +8,7 @@
 Metamorfitas::Metamorfitas(const string& nombre, int vida, int edad, int x, int y)
         : Criaturas(nombre, vida, edad, x, y) {}
 
-float Metamorfitas::adaptabilidad() {
+int Metamorfitas::adaptabilidad() {
 
 }
 
