@@ -22,7 +22,7 @@ protected:
 public:
 
     //Constructor
-    Criaturas(const string& nombre, int vida = 50, int edad = 0, int x, int y);
+    Criaturas(const string& nombre, int vida = 50, int edad = 0, int x = 0, int y = 0);
 
     virtual void actuar() = 0;
     virtual void reproducirse(vector<shared_ptr<Criaturas>>& criaturas) = 0;
@@ -49,6 +49,8 @@ public:
     const vector<Criaturas*>& obtenerHijos() const;
 
     void mover(int tamañoMapa);
+
+    virtual ~Criaturas(); //Destructor virtual
 };
 
 

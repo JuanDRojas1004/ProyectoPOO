@@ -1,56 +1,185 @@
 #include <iostream>
 #include <vector>
+#include <memory>
+#include <string>
 #include <random>
+#include <limits>
 #include "Centellas.h"
 #include "Metamorfitas.h"
 #include "LentosdeRaiz.h"
-
 #include "NodoNormal.h"
 #include "NodoRegenerativo.h"
 #include "NodoVenenoso.h"
 #include "NodoJovenPorSiempre.h"
-
 #include "Criaturas.h"
 #include "Nodo.h"
-
-
 using namespace std;
 
+// Variables globales
+int tamañoMapa;
+vector<vector<shared_ptr<Nodo>>> mapa;
+vector<shared_ptr<Criaturas>> criaturas;
 
-void imprimirMapa(const vector<vector<Nodo*>>& mapa) {
-    int size = mapa.size();
-    cout << "\nMapa de Nodos (Tipo | Cantidad de Criaturas):\n\n";
+random_device rd;
+mt19937 gen(rd());
 
-    // Encabezado de columnas
-    cout << "     ";
-    for (int col = 0; col < size; ++col) {
-        cout << "[" << col << "]     ";
+// Funciones auxiliares
+int pedirNumero(const string& mensaje) {
+    int num;
+    cout << mensaje;
+    while (!(cin >> num) || num <= 0) {
+        cout << "Por favor ingrese un número válido mayor que 0: ";
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
     }
-    cout << endl;
+    return num;
+}
 
-    string linea = "   +" + string(size, '-').replace(0, 1, "--------+");
+pair<int, int> posicionAleatoria() {
+    uniform_int_distribution<> dis(0, tamañoMapa - 1);
+    return {dis(gen), dis(gen)};
+}
 
-    for (int i = 0; i < size; ++i) {
-        cout << "   +";
-        for (int j = 0; j < size; ++j) cout << "--------+";
-        cout << "\n[" << i << "]|";
+void crearMapa() {
+    tamañoMapa = pedirNumero("Ingrese el tamaño del mapa (ej. 5 para 5x5): ");
+    mapa.clear();
+    for (int i = 0; i < tamañoMapa; ++i) {
+        vector<shared_ptr<Nodo>> fila;
+        for (int j = 0; j < tamañoMapa; ++j) {
 
-        for (int j = 0; j < size; ++j) {
-            Nodo* nodo = mapa[i][j];
-            string tipo = nodo->getTipo();
-            char simbolo = 'N'; // Por defecto
-            if (tipo == "Venenoso") simbolo = 'V';
-            else if (tipo == "JovenPorSiempre") simbolo = 'J';
-            else if (tipo == "Curativo") simbolo = 'C';
+            uniform_int_distribution<> tipoNodo(0, 3); // 4 tipos posibles
 
-            cout << "  " << simbolo << "(" << nodo->cantidadCriaturas() << ")  |";
+            int tipo = tipoNodo(gen);
+            if (tipo == 0)
+                fila.push_back(make_shared<NodoNormal>(i, j));
+            else if (tipo == 1)
+                fila.push_back(make_shared<NodoVenenoso>(i, j));
+            else if (tipo == 2)
+                fila.push_back(make_shared<NodoRegenerativo>(i, j));
+            else if (tipo == 3)
+                fila.push_back(make_shared<NodoJovenPorSiempre>(i, j));
+
+
+
+        }
+        mapa.push_back(fila);
+    }
+    cout << "Mapa " << tamañoMapa << "x" << tamañoMapa << " creado exitosamente.\n";
+}
+
+void crearCriatura() {
+    if (mapa.empty()) {
+        cout << "Debe crear primero un mapa.\n";
+        return;
+    }
+
+    cout << "\nElige el tipo de criatura a crear:\n";
+    cout << "1. Centella - Rápida, eléctrica y chispeante.\n";
+    cout << "2. Lento de Raíz - Fuerte y resistente, pero lento.\n";
+    cout << "3. Metamorifta - Inestable, adaptable, siempre cambiando.\n";
+    cout << "Opción: ";
+
+    int opcion;
+    cin >> opcion;
+
+    string nombre;
+    cout << "Nombre de la criatura: ";
+    cin >> nombre;
+
+    pair<int, int> pos = posicionAleatoria();
+    shared_ptr<Criaturas> criatura;
+
+    if (opcion == 1)
+        criatura = make_shared<Centellas>(nombre, 50, 0, pos.first, pos.second);
+    else if (opcion == 2)
+        criatura = make_shared<LentosdeRaiz>(nombre, 50, 0, pos.first, pos.second);
+    else if (opcion == 3)
+        criatura = make_shared<Metamorfitas>(nombre, 50, 0, pos.first, pos.second);
+    else {
+        cout << "Opción inválida.\n";
+        return;
+    }
+
+    criaturas.push_back(criatura);
+    mapa[pos.first][pos.second]->agregarCriaturas(criatura.get());
+
+    cout << "\nCriatura " << nombre << " del tipo " << criatura->getTipo()
+         << " creada en posicion (" << pos.first << ", " << pos.second << ")\n";
+}
+
+void imprimirMapa() {
+    if (mapa.empty()) {
+        cout << "No hay mapa creado.\n";
+        return;
+    }
+
+    cout << "\nMapa de Criaturas:\n";
+    for (int i = 0; i < tamañoMapa; ++i) {
+        for (int j = 0; j < tamañoMapa; ++j) {
+            cout << "[" << mapa[i][j]->cantidadCriaturas() << "] ";
         }
         cout << endl;
     }
-    cout << "   +";
-    for (int j = 0; j < size; ++j) cout << "--------+";
-    cout << "\n\n N = Normal, V = Venenoso, R = Rejuvenecedor, C = Curativo, P = Reproductivo\n";
 }
 
+void mostrarCriaturasPorNodo() {
+    for (int i = 0; i < tamañoMapa; ++i) {
+        for (int j = 0; j < tamañoMapa; ++j) {
+            cout << "\nNodo (" << i << ", " << j << ") contiene " << mapa[i][j]->cantidadCriaturas() << " criatura(s):\n";
+            mapa[i][j]->mostrarCriaturas();
+        }
+    }
+}
 
+void avanzarCiclo() {
+    cout << "\nAvanzando ciclo del mundo...\n";
+    uniform_int_distribution<> accion(0, 3); // 0: nada, 1: mover, 2: reproducir, 3: morir
 
+    for (auto& criatura : criaturas) {
+        if (!criatura->estaVivaFunc()) continue;
+
+        int eleccion = accion(gen);
+        if (eleccion == 0) {
+            cout << criatura->getNombre() << " no hace nada.\n";
+        } else if (eleccion == 1) {
+            criatura->mover(tamañoMapa);
+        } else if (eleccion == 2) {
+            criatura->reproducirse(criaturas);
+        } else if (eleccion == 3) {
+            criatura->morir();
+        }
+    }
+}
+
+void guardarYSalir() {
+    cout << "\nGuardando mundo en archivo JSON... (por implementar)\n";
+    cout << "\u00a1Hasta la próxima!\n";
+}
+
+int main() {
+    int opcion = -1;
+    do {
+        cout << "\n=== MENÚ DEL MUNDO DE CRIATURAS ===\n";
+        cout << "1. Crear mapa\n";
+        cout << "2. Crear criatura\n";
+        cout << "3. Avanzar un ciclo\n";
+        cout << "4. Imprimir mapa\n";
+        cout << "5. Mostrar criaturas por nodo\n";
+        cout << "6. Guardar y salir\n";
+        cout << "Opción: ";
+        cin >> opcion;
+
+        switch (opcion) {
+            case 1: crearMapa(); break;
+            case 2: crearCriatura(); break;
+            case 3: avanzarCiclo(); break;
+            case 4: imprimirMapa(); break;
+            case 5: mostrarCriaturasPorNodo(); break;
+            case 6: guardarYSalir(); break;
+            default: cout << "Opción inválida.\n";
+        }
+
+    } while (opcion != 6);
+
+    return 0;
+}

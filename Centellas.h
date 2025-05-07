@@ -16,7 +16,7 @@ private:
 public:
 
     //Constructor
-    Centellas(const string& nombre, int vida = 50, int edad = 0, int x, int y);
+    Centellas(const string& nombre, int vida = 50, int edad = 0, int x = 0, int y = 0);
 
     void actuar() override;
     void reproducirse(vector<shared_ptr<Criaturas>>& criaturas) override;

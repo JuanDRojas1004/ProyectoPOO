@@ -50,6 +50,10 @@ const vector<Criaturas *> & Criaturas::obtenerHijos() const {
 void Criaturas::reproducirse(vector<shared_ptr<Criaturas>>& criaturas) {
 }
 
+void Criaturas::morir(){
+estaViva = false;
+}
+
 void Criaturas::mover(int tamañoMapa) {
     if (!estaViva) return; //Asegurarse de que la criatura esté viva para moverse
     vector<pair<int, int>> posiblesMovimientos; //Vector en el que se guardarán los posibles movimientos
@@ -72,4 +76,6 @@ void Criaturas::mover(int tamañoMapa) {
 
     cout << nombre << " se movió a (" << posicion.first << ", " << posicion.second << ")." << endl;
 }
+
+Criaturas::~Criaturas() {}
 
