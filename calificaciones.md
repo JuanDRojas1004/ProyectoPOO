@@ -1,5 +1,4 @@
-Autoevaluación y coevaluación de integrantes:
-Autoevaluación Juan David Rojas: 5.0
-Autoevaluación Isabella Garzón: 4.5
-Coevaluación Juan David Rojas: 5.0
-Coevaluación Isabella Garzón: 5.0
+| Rol | Nombre | Autoevaluación | Coevaluación |
+|-----|--------|--------|
+| *Líder Técnico y Desarrollador* | Juan David Rojas | 5.0 | 5.0 |
+| *Responsable de Calidad, Documentación y Desarrollador* | Isabella Garzon| 4.6 | 5.0 |
