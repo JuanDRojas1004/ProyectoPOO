@@ -140,36 +140,62 @@ void mostrarCriaturasPorNodo() {
 }
 
 void avanzarCiclo() {
-cout << "\nAvanzando ciclo del mundo...\n";
-uniform_int_distribution<> accion(0, 3); // 0: nada, 1: mover, 2: reproducir, 3: morir
-for (auto& criatura : criaturas) {
-    if (!criatura->estaVivaFunc()) continue;
+    cout << "\nAvanzando ciclo del mundo...\n";
 
-    criatura->setEdad(1);  // Aumentar la edad
+    for (auto& criatura : criaturas) {
+        if (!criatura->estaVivaFunc()) continue;
 
-    int eleccion = accion(gen);
-    if (eleccion == 0) {
-        cout << criatura->getNombre() << " no hace nada.\n";
-    } else if (eleccion == 1) {
-        pair<int, int> posAnterior = criatura->getPosicion();
-        criatura->mover(tamañoMapa);
-        pair<int, int> posNueva = criatura->getPosicion();
-        mapa[posAnterior.first][posAnterior.second]->eliminarCriatura(criatura.get());
-        mapa[posNueva.first][posNueva.second]->agregarCriaturas(criatura.get());
+        criatura->setEdad(1);  // Aumentar la edad
 
-        cout << criatura->getNombre() << " se desplazó de (" << posAnterior.first << ", " << posAnterior.second
-             << ") a (" << posNueva.first << ", " << posNueva.second << ").\n";
-    } else if (eleccion == 2) {
-        criatura->reproducirse(criaturas, mapa);
-    } else if (eleccion == 3) {
-        criatura->morir();
+        string tipo = criatura->getTipo();
+        int eleccion = -1;
+
+        // Distribuciones personalizadas según el tipo
+        if (tipo == "Centella") {
+            // Mayor probabilidad de moverse (1)
+            uniform_int_distribution<> dist(0, 5); // 0,1: nada, 2-4: mover, 5: reproducir
+            int r = dist(gen);
+            if (r <= 1) eleccion = 0;
+            else if (r <= 4) eleccion = 1;
+            else eleccion = 2;
+        }
+        else if (tipo == "LentosdeRaiz") {
+            // Mayor probabilidad de reproducirse (2)
+            uniform_int_distribution<> dist(0, 4); // 0: nada, 1: mover, 2-3: reproducir, 4: morir
+            int r = dist(gen);
+            if (r == 0) eleccion = 0;
+            else if (r == 1) eleccion = 1;
+            else if (r <= 3) eleccion = 2;
+            else eleccion = 3;
+        }
+        else {
+            // Metamorfitas o cualquier otro → comportamiento base
+            uniform_int_distribution<> dist(0, 3); // equitativo
+            eleccion = dist(gen);
+        }
+
+        // Ejecutar acción
+        if (eleccion == 0) {
+            cout << criatura->getNombre() << " no hace nada.\n";
+        } else if (eleccion == 1) {
+            pair<int, int> posAnterior = criatura->getPosicion();
+            criatura->mover(tamañoMapa);
+            pair<int, int> posNueva = criatura->getPosicion();
+            mapa[posAnterior.first][posAnterior.second]->eliminarCriatura(criatura.get());
+            mapa[posNueva.first][posNueva.second]->agregarCriaturas(criatura.get());
+
+            cout << criatura->getNombre() << " se desplazó de (" << posAnterior.first << ", " << posAnterior.second
+                 << ") a (" << posNueva.first << ", " << posNueva.second << ").\n";
+        } else if (eleccion == 2) {
+            criatura->reproducirse(criaturas, mapa);
+        } else if (eleccion == 3) {
+            criatura->morir();
+        }
     }
-}
 }
 
 void guardarYSalir() {
-    cout << "\nGuardando mundo en archivo JSON... (por implementar)\n";
-    cout << "\u00a1Hasta la próxima!\n";
+    cout << "\nHasta la próxima!\n";
 }
 
 int main() {
@@ -181,7 +207,7 @@ int main() {
         cout << "3. Avanzar un ciclo\n";
         cout << "4. Imprimir mapa\n";
         cout << "5. Mostrar criaturas por nodo\n";
-        cout << "6. Guardar y salir\n";
+        cout << "6. Salir\n";
         cout << "Opción: ";
         cin >> opcion;
 
@@ -199,3 +225,9 @@ int main() {
 
     return 0;
 }
+
+
+
+
+
+
