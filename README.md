@@ -36,7 +36,7 @@ simular un ciclo cada criatura realiza una accion aleatoria como lo son el mover
 - Efecto Especial: Cuando una criatura se encuentra en ese nodo la criatura perdera 10 de vida por cada ciclo que permanezca en el.
 
 ### Nodo Joven por Siempre
-- Descripcion: Despues de la gran explosion, la fuente de la juventos exploto en mil pedazos dejando fragmentos de si misma regados
+- Descripcion: Despues de la gran explosion, la fuente de la juventud exploto en mil pedazos dejando fragmentos de si misma regados
   por todo el mundo, este tipo de nodos se crearon al rededor de estos fragmentos, logrando asi que las criaturas de su alrededor puedan
   rejuvenecer por cada ciclo que pasen en el.
 - Efecto Especial: Cada ciclo que una criatura pase en este nodo su edad se vera reducida en un ciclo, esta dejara de rejuvenecer si la
