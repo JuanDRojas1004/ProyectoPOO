@@ -166,7 +166,6 @@ void avanzarCiclo() {
             if (r == 0) eleccion = 0;
             else if (r == 1) eleccion = 1;
             else if (r <= 3) eleccion = 2;
-            else eleccion = 3;
         }
         else {
             // Metamorfitas o cualquier otro → comportamiento base
@@ -188,8 +187,6 @@ void avanzarCiclo() {
                  << ") a (" << posNueva.first << ", " << posNueva.second << ").\n";
         } else if (eleccion == 2) {
             criatura->reproducirse(criaturas, mapa);
-        } else if (eleccion == 3) {
-            criatura->morir();
         }
     }
 }
