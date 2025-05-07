@@ -4,11 +4,13 @@
 
 #ifndef NODO_H
 #define NODO_H
+
 #include <string>
 #include <iostream>
 #include <utility>
 #include <vector>
-#include "Criaturas.h"
+
+class Criaturas;
 using namespace std;
 
 
@@ -37,6 +39,8 @@ public:
     virtual void efectoEspecial(Criaturas *cri) = 0;
 
     int cantidadCriaturas() const;
+
+    void eliminarCriatura(Criaturas* cri);
 
     virtual ~Nodo();
 

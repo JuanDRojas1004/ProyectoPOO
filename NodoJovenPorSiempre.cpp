@@ -3,6 +3,7 @@
 //
 
 #include "NodoJovenPorSiempre.h"
+#include "Criaturas.h"
 
 NodoJovenPorSiempre::NodoJovenPorSiempre(int x, int y): Nodo("JovenPorSiempre", x, y) {}
 

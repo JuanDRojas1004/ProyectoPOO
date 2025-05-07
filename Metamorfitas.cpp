@@ -3,6 +3,7 @@
 //
 
 #include "Metamorfitas.h"
+#include "Nodo.h"
 #include <iostream>
 
 Metamorfitas::Metamorfitas(const string& nombre, int vida, int edad, int x, int y)
@@ -17,18 +18,17 @@ void Metamorfitas::actuar() {
     cout << nombre << " cambia de forma adaptándose al entorno. Adaptabilidad: " << adaptabilidad() << endl;
 }
 
-void Metamorfitas::reproducirse(vector<shared_ptr<Criaturas>>& criaturas) {
-    if (!estaViva) return; //Verificar si está viva antes de reproducirse
-    if (edad >= 1) {
-        cout << nombre << " se ha reproducido " << endl;
-        Metamorfitas* hijo = new Metamorfitas(nombre + "_hijo", 50, 0, posicion.first, posicion.second); //Se agrega un nuevo hijo al vector de hijos y queda en la misma posición del padre
-        hijos.push_back(hijo);
-
-        cout << "Nueva metamorfita: " << hijo->getNombre() //apuntar al metodo para obtener el nombre
-             << " en posición (" << posicion.first << ", " << posicion.second << ")" << endl;
-    } else {
-        cout << nombre << " aun es muy joven para reproducirse " << endl;
-    }
+void Metamorfitas::reproducirse(vector<shared_ptr<Criaturas>>& criaturas,
+vector<vector<shared_ptr<Nodo>>>& mapa) {
+if (!estaViva) return;
+if (edad >= 3) {
+    cout << nombre << " ha cambiado... ¡una nueva metamorifta ha emergido!\n";
+    auto hijo = make_shared<Metamorfitas>(nombre + "_hijo", 55, 0, posicion.first, posicion.second);
+    criaturas.push_back(hijo);
+    mapa[posicion.first][posicion.second]->agregarCriaturas(hijo.get());
+    cout << "Nueva metamorifta: " << hijo->getNombre()
+         << " en posición (" << posicion.first << ", " << posicion.second << ")\n";
+}
 }
 
 void Metamorfitas::morir() {

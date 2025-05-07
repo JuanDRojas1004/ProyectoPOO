@@ -4,6 +4,7 @@
 
 #include "NodoNormal.h"
 
+
 NodoNormal::NodoNormal(int x, int y): Nodo("Normal", x, y) {}
 
 void NodoNormal::efectoEspecial(Criaturas *cri) {

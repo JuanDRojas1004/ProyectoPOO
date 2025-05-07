@@ -3,6 +3,7 @@
 //
 
 #include "NodoRegenerativo.h"
+#include "Criaturas.h"
 
 NodoRegenerativo::NodoRegenerativo(int x, int y): Nodo("Regenerativo", x, y) {}
 

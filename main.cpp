@@ -132,24 +132,38 @@ void mostrarCriaturasPorNodo() {
 }
 
 void avanzarCiclo() {
-    cout << "\nAvanzando ciclo del mundo...\n";
-    uniform_int_distribution<> accion(0, 3); // 0: nada, 1: mover, 2: reproducir, 3: morir
+cout << "\nAvanzando ciclo del mundo...\n";
+uniform_int_distribution<> accion(0, 3); // 0: nada, 1: mover, 2: reproducir, 3: morir
+for (auto& criatura : criaturas) {
+    if (!criatura->estaVivaFunc()) continue;
 
-    for (auto& criatura : criaturas) {
-        if (!criatura->estaVivaFunc()) continue;
-        criatura->setEdad(1);
+    criatura->setEdad(1);  // Aumentar la edad
 
-        int eleccion = accion(gen);
-        if (eleccion == 0) {
-            cout << criatura->getNombre() << " no hace nada.\n";
-        } else if (eleccion == 1) {
-            criatura->mover(tamañoMapa);
-        } else if (eleccion == 2) {
-            criatura->reproducirse(criaturas);
-        } else if (eleccion == 3) {
-            criatura->morir();
-        }
+    int eleccion = accion(gen);
+    if (eleccion == 0) {
+        cout << criatura->getNombre() << " no hace nada.\n";
+    } else if (eleccion == 1) {
+        // 1️⃣ Obtener posición anterior
+        pair<int, int> posAnterior = criatura->getPosicion();
+
+        // 2️⃣ Mover criatura
+        criatura->mover(tamañoMapa);
+
+        // 3️⃣ Obtener nueva posición
+        pair<int, int> posNueva = criatura->getPosicion();
+
+        // 4️⃣ Actualizar nodos del mapa
+        mapa[posAnterior.first][posAnterior.second]->eliminarCriatura(criatura.get());
+        mapa[posNueva.first][posNueva.second]->agregarCriaturas(criatura.get());
+
+        cout << criatura->getNombre() << " se desplazó de (" << posAnterior.first << ", " << posAnterior.second
+             << ") a (" << posNueva.first << ", " << posNueva.second << ").\n";
+    } else if (eleccion == 2) {
+        criatura->reproducirse(criaturas, mapa);
+    } else if (eleccion == 3) {
+        criatura->morir();
     }
+}
 }
 
 void guardarYSalir() {
