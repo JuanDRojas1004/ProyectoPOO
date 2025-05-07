@@ -124,8 +124,6 @@ simular un ciclo cada criatura realiza una accion aleatoria como lo son el mover
 - Se puede imprimir visualmente con la función imprimirMapa() para ver el estado actual del mundo (tipo de nodo y cantidad de criaturas en cada celda).
 
 
-## Manual de Usuario:
-
 
 ### Equipo de Desarrollo
 
