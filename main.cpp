@@ -108,18 +108,26 @@ void crearCriatura() {
 }
 
 void imprimirMapa() {
-    if (mapa.empty()) {
-        cout << "No hay mapa creado.\n";
-        return;
+    int size = mapa.size();
+    cout << "\n Mapa de Nodos (Tipo | Cantidad de Criaturas):\n\n    ";
+    for (int j = 0; j < size; j++) cout << "   [" << j << "]   ";
+    cout << "\n";
+
+    for (int i = 0; i < size; i++) {
+        cout << "   +";
+        for (int j = 0; j < size; j++) cout << "--------+";
+        cout << "\n[" << i << "]|";
+        for (int j = 0; j < size; j++) {
+            string tipo = mapa[i][j]->getTipo().substr(0,1);
+            int cant = mapa[i][j]->cantidadCriaturas();
+            cout << "  " << tipo << "(" << cant << ")  |";
+        }
+        cout << "\n   +";
+        for (int j = 0; j < size; j++) cout << "--------+";
+        cout << "\n";
     }
 
-    cout << "\nMapa de Criaturas:\n";
-    for (int i = 0; i < tamañoMapa; ++i) {
-        for (int j = 0; j < tamañoMapa; ++j) {
-            cout << "[" << mapa[i][j]->cantidadCriaturas() << "] ";
-        }
-        cout << endl;
-    }
+    cout << "\nLeyenda: N = Normal, V = Venenoso, R = Rejuvenecedor, C = Curativo, J = Joven por siempre\n";
 }
 
 void mostrarCriaturasPorNodo() {
@@ -143,16 +151,9 @@ for (auto& criatura : criaturas) {
     if (eleccion == 0) {
         cout << criatura->getNombre() << " no hace nada.\n";
     } else if (eleccion == 1) {
-        // 1️⃣ Obtener posición anterior
         pair<int, int> posAnterior = criatura->getPosicion();
-
-        // 2️⃣ Mover criatura
         criatura->mover(tamañoMapa);
-
-        // 3️⃣ Obtener nueva posición
         pair<int, int> posNueva = criatura->getPosicion();
-
-        // 4️⃣ Actualizar nodos del mapa
         mapa[posAnterior.first][posAnterior.second]->eliminarCriatura(criatura.get());
         mapa[posNueva.first][posNueva.second]->agregarCriaturas(criatura.get());
 
