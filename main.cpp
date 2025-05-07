@@ -108,18 +108,26 @@ void crearCriatura() {
 }
 
 void imprimirMapa() {
-    if (mapa.empty()) {
-        cout << "No hay mapa creado.\n";
-        return;
+    int size = mapa.size();
+    cout << "\n Mapa de Nodos (Tipo | Cantidad de Criaturas):\n\n    ";
+    for (int j = 0; j < size; j++) cout << "   [" << j << "]   ";
+    cout << "\n";
+
+    for (int i = 0; i < size; i++) {
+        cout << "   +";
+        for (int j = 0; j < size; j++) cout << "--------+";
+        cout << "\n[" << i << "]|";
+        for (int j = 0; j < size; j++) {
+            string tipo = mapa[i][j]->getTipo().substr(0,1);
+            int cant = mapa[i][j]->cantidadCriaturas();
+            cout << "  " << tipo << "(" << cant << ")  |";
+        }
+        cout << "\n   +";
+        for (int j = 0; j < size; j++) cout << "--------+";
+        cout << "\n";
     }
 
-    cout << "\nMapa de Criaturas:\n";
-    for (int i = 0; i < tamañoMapa; ++i) {
-        for (int j = 0; j < tamañoMapa; ++j) {
-            cout << "[" << mapa[i][j]->cantidadCriaturas() << "] ";
-        }
-        cout << endl;
-    }
+    cout << "\nLeyenda: N = Normal, V = Venenoso, R = Rejuvenecedor, C = Curativo, J = Joven por siempre\n";
 }
 
 void mostrarCriaturasPorNodo() {
@@ -132,23 +140,31 @@ void mostrarCriaturasPorNodo() {
 }
 
 void avanzarCiclo() {
-    cout << "\nAvanzando ciclo del mundo...\n";
-    uniform_int_distribution<> accion(0, 3); // 0: nada, 1: mover, 2: reproducir, 3: morir
+cout << "\nAvanzando ciclo del mundo...\n";
+uniform_int_distribution<> accion(0, 3); // 0: nada, 1: mover, 2: reproducir, 3: morir
+for (auto& criatura : criaturas) {
+    if (!criatura->estaVivaFunc()) continue;
 
-    for (auto& criatura : criaturas) {
-        if (!criatura->estaVivaFunc()) continue;
+    criatura->setEdad(1);  // Aumentar la edad
 
-        int eleccion = accion(gen);
-        if (eleccion == 0) {
-            cout << criatura->getNombre() << " no hace nada.\n";
-        } else if (eleccion == 1) {
-            criatura->mover(tamañoMapa);
-        } else if (eleccion == 2) {
-            criatura->reproducirse(criaturas);
-        } else if (eleccion == 3) {
-            criatura->morir();
-        }
+    int eleccion = accion(gen);
+    if (eleccion == 0) {
+        cout << criatura->getNombre() << " no hace nada.\n";
+    } else if (eleccion == 1) {
+        pair<int, int> posAnterior = criatura->getPosicion();
+        criatura->mover(tamañoMapa);
+        pair<int, int> posNueva = criatura->getPosicion();
+        mapa[posAnterior.first][posAnterior.second]->eliminarCriatura(criatura.get());
+        mapa[posNueva.first][posNueva.second]->agregarCriaturas(criatura.get());
+
+        cout << criatura->getNombre() << " se desplazó de (" << posAnterior.first << ", " << posAnterior.second
+             << ") a (" << posNueva.first << ", " << posNueva.second << ").\n";
+    } else if (eleccion == 2) {
+        criatura->reproducirse(criaturas, mapa);
+    } else if (eleccion == 3) {
+        criatura->morir();
     }
+}
 }
 
 void guardarYSalir() {

@@ -3,6 +3,7 @@
 //
 
 #include "NodoVenenoso.h"
+#include "Criaturas.h"
 
 NodoVenenoso::NodoVenenoso(int x, int y): Nodo("Venenoso", x, y) {}
 

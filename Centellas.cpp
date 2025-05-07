@@ -3,6 +3,7 @@
 //
 
 #include "Centellas.h"
+#include "Nodo.h"
 #include <iostream>
 
 Centellas::Centellas(const string& nombre, int vida, int edad, int x, int y)
@@ -17,18 +18,17 @@ void Centellas::actuar() {
     cout << nombre << " Se mueve rápidamente con velocidad: " << velocidad() << "." << endl;
 }
 
-void Centellas::reproducirse(vector<shared_ptr<Criaturas>>& criaturas) {
-    if (!estaViva) return; //Verificar si está viva antes de reproducirse
-    if (edad >= 1) { //Condición para que se reproduzca solo si tiene 1 o más ciclos
-        cout << nombre << " se ha reproducido" << endl;
-        Centellas* hijo = new Centellas(nombre + "_hijo", 50, 0, posicion.first, posicion.second); //Agregar un nuevo hijo al vector hijos en la misma posición del padre
-        hijos.push_back(hijo);
-
-        cout << "Nueva centella: " << hijo->getNombre()
-             << " en posición (" << posicion.first << ", " << posicion.second << ")" << endl;
-    } else {
-        cout << nombre << " es demasiado joven para reproducirse " << endl;
-    }
+void Centellas::reproducirse(vector<shared_ptr<Criaturas>>& criaturas,
+vector<vector<shared_ptr<Nodo>>>& mapa) {
+if (!estaViva) return;
+if (edad >= 1) {
+    cout << nombre << " ha liberado una chispa vibrante... ¡una nueva centella ha nacido!\n";
+    auto hijo = make_shared<Centellas>(nombre + "_hijo", 50, 0, posicion.first, posicion.second);
+    criaturas.push_back(hijo);
+    mapa[posicion.first][posicion.second]->agregarCriaturas(hijo.get());
+    cout << "Nueva centella: " << hijo->getNombre()
+         << " en posición (" << posicion.first << ", " << posicion.second << ")\n";
+}
 }
 
 void Centellas::morir() {

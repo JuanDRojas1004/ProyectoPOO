@@ -1,81 +1,49 @@
 #include "Criaturas.h"
+#include "Nodo.h"
 #include <random>
 
-Criaturas::Criaturas(const string &nombre, int vida, int edad, int x, int y):
-nombre(nombre), vida(vida), edad(edad), posicion(make_pair(x, y)), estaViva(true) {}
-
-//Vector para almacenar a los hijos de las criaturas
 vector<Criaturas*> Criaturas::hijos;
 
-string Criaturas::getNombre() {
-    return nombre;
+Criaturas::Criaturas(const string &nombre, int vida, int edad, int x, int y)
+        : nombre(nombre), vida(vida), edad(edad), posicion(make_pair(x, y)), estaViva(true) {}
+
+string Criaturas::getNombre() { return nombre; }
+int Criaturas::getVida() { return vida; }
+int Criaturas::getEdad() { return edad; }
+int Criaturas::setVida(int valor) { vida += valor; return vida; }
+int Criaturas::setEdad(int valor) { edad += valor; return edad; }
+void Criaturas::setPosicion(int x, int y) { posicion.first = x; posicion.second = y; }
+pair<int, int> Criaturas::getPosicion() { return posicion; }
+bool Criaturas::estaVivaFunc() const { return estaViva; }
+const vector<Criaturas*>& Criaturas::obtenerHijos() const { return hijos; }
+
+void Criaturas::reproducirse(vector<shared_ptr<Criaturas>>& criaturas, vector<vector<shared_ptr<Nodo>>>& mapa) {
+    // Este método no se usa, es virtual puro, pero definimos vacío para evitar linker error si se llama accidentalmente
 }
 
-int Criaturas::getVida() {
-    return vida;
+void Criaturas::morir() {
+    estaViva = false;
 }
 
-int Criaturas::getEdad() {
-    return edad;
-}
+void Criaturas::mover(int tamanioMapa) {
+    if (!estaViva) return;
+    vector<pair<int, int>> posiblesMovimientos;
 
-int Criaturas::setVida(int valor) {
-    vida += valor; //sumar y disminuir vida
-    return vida;
-}
-
-int Criaturas::setEdad(int valor) {
-    edad += valor; //sumar y disminuir edad
-    return edad;
-}
-
-void Criaturas::setPosicion(int x, int y) {
-    posicion.first = x;
-    posicion.second = y;
-}
-
-
-pair<int, int> Criaturas::getPosicion() { //Trabajamos la posición como un par
-    return posicion;
-}
-
-bool Criaturas::estaVivaFunc() const { //Función booleana para validar si la criatura está viva o no
-    return estaViva;
-}
-
-const vector<Criaturas *> & Criaturas::obtenerHijos() const {
-    return hijos;
-}
-
-void Criaturas::reproducirse(vector<shared_ptr<Criaturas>>& criaturas) {
-}
-
-void Criaturas::morir(){
-estaViva = false;
-}
-
-void Criaturas::mover(int tamañoMapa) {
-    if (!estaViva) return; //Asegurarse de que la criatura esté viva para moverse
-    vector<pair<int, int>> posiblesMovimientos; //Vector en el que se guardarán los posibles movimientos
-
-    //Tupla con posición (x,y)
     int x = posicion.first;
     int y = posicion.second;
 
-    if (x > 0) posiblesMovimientos.push_back({x - 1, y});               //izquierda
-    if (x < tamañoMapa - 1) posiblesMovimientos.push_back({x + 1, y});  //derecha
-    if (y > 0) posiblesMovimientos.push_back({x, y - 1});               //abajo
-    if (y < tamañoMapa - 1) posiblesMovimientos.push_back({x, y + 1});  //arriba
+    if (x > 0) posiblesMovimientos.push_back({x - 1, y});
+    if (x < tamanioMapa - 1) posiblesMovimientos.push_back({x + 1, y});
+    if (y > 0) posiblesMovimientos.push_back({x, y - 1});
+    if (y < tamanioMapa - 1) posiblesMovimientos.push_back({x, y + 1});
 
-    random_device rd; //
+    random_device rd;
     mt19937 gen(rd());
     uniform_int_distribution<> dist(0, posiblesMovimientos.size() - 1);
     pair<int, int> nuevaPos = posiblesMovimientos[dist(gen)];
 
     posicion = nuevaPos;
-
     cout << nombre << " se movió a (" << posicion.first << ", " << posicion.second << ")." << endl;
 }
 
-Criaturas::~Criaturas() {}
-
+Criaturas::~Criaturas() = default;
