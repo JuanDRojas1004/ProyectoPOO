@@ -17,7 +17,7 @@ simular un ciclo cada criatura realiza una accion aleatoria como lo son el mover
 - Habilidad: Se desplaza con mayor facilidad entre los nodos.
 - Descripcion: Es la mas rapida de las criaturas.
 
-### Lente de Raiz 🌿
+### Lento de Raiz 🌿
 - Habilidad: Tiene una mayor posibilidad de reproducirse que las demas criaturas.
 - Descripcion: Es la criatura mas hot 🔥 de todas.
 
